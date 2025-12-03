@@ -1,0 +1,46 @@
+package Paquetes_Excepciones;
+
+import java.util.Scanner;
+
+public class ejer2 {
+	static Scanner sc;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+/*2. Lee dos cadenas. Haz una función que devuelva el número de veces que la primera
+está incluida en la segunda. Devuelve una excepción propia si cualquiera de las dos
+está vacía.*/
+		String cadena1="", cadena2="";
+		boolean correcto=false;
+		sc = new Scanner(System.in);
+		
+
+		
+	}
+	public static int Radar () {
+		String cadena1=null, cadena2=null;
+		int busca=0;
+		do {
+			System.out.println("introduce una cadena larga");
+			cadena1=sc.nextLine();
+			System.out.println("introduce una cadena corta");
+			cadena2=sc.nextLine();
+			if(cadena1.length()<cadena2.length()) {
+				System.out.println("orden de las cadenas incorrecto ");
+			}
+				
+		}while(cadena1.length()<cadena2.length());
+		
+		if(cadena1.equalsIgnoreCase("null") !! cadena2.equalsIgnoreCase("null")) {
+			throw new CadenaNullException ("una cadena esta vacia");}
+		busca=cadena1.indexOf(cadena2, 0);
+		
+			
+		return busca;
+		
+	}
+	private static void e(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	}
+

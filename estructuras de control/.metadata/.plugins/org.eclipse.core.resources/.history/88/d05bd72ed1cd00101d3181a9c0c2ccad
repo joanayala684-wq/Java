@@ -1,0 +1,30 @@
+package desafios;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class ejer1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+/* hacer el juego de piedra, papel, tijera. el jugador juega con la maquina*/
+		Scanner sc=new Scanner (System.in);
+		Random r=new Random();
+		int maquina=r.nextInt(5)+1;
+		final int piedra=1, tijera=2, papel=3, spoke=4, lagaro=5;
+		int jugador=0;
+		boolean correcto=false;
+		
+		do {
+			System.out.println("introduce tu eleccion");
+			System.out.println("piedra=1, tijera=2, papel=3, spoke=4, lagaro=5");
+			jugador=sc.nextInt();
+			if(maquina==jugador)
+				System.out.println("es un empate");
+			else 
+				System.out.println("has perdido");
+			 
+		}while(!correcto);
+	}
+
+}

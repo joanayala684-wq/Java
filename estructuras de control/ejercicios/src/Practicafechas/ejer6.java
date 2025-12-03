@@ -1,0 +1,36 @@
+package Practicafechas;
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class ejer6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner (System.in);
+		LocalDate fechaNacimiento=null;
+		Locale espanol = Locale.forLanguageTag("es-ES");
+		boolean correcto= false;
+		DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		do {
+			 System.out.println("introduce tu fecha de nacimiento");
+			 String FechaNaci=sc.nextLine();
+			 try {
+				 fechaNacimiento=LocalDate.parse(FechaNaci, patron);
+				 correcto=true;
+			 }catch(DateTimeParseException e) {
+					System.out.println("error al introducir la fecha, vuelve a intentarlo"); 
+			 }
+		}while(!correcto);
+		DayOfWeek diaSemanaEnum = fechaNacimiento.getDayOfWeek();
+		String diaSemanaNombre = diaSemanaEnum.getDisplayName(TextStyle.FULL, espanol);
+		String dia = diaSemanaNombre.substring(0, 1).toUpperCase() + diaSemanaNombre.substring(1);
+		System.out.println("El día de la semana en que naciste fue un **" + dia + "**.");
+	}
+
+}

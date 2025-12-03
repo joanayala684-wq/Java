@@ -1,0 +1,64 @@
+package Paquetes_Excepciones;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
+public class ejer5 {
+	static Scanner sc;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+/*Lee una cadena e intenta extraer una fecha con el formato dd/mm/yyyy de su
+contenido (la cadena puede tener otras cosas, por ejemplo “Yo nací el 29/02/1998”).
+Los casos en los que no se encuentre ninguna fecha o se encuentren varias deberán
+manejarse con excepciones.*/
+		DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		sc = new Scanner(System.in);
+		String cadena;
+		LocalDate fecha=null;
+		
+
+			System.out.println("introduce una cadena");
+			cadena=sc.nextLine();
+
+		try {
+			fecha=BuscaFecha(cadena);
+			if(fecha==null) 
+				System.out.println("Se ha encontrado esta fecha: " + patron.format(fecha));
+		
+		} catch (DosFechasException e) {
+			System.out.println ("error: "+ e.getMessage());
+		} catch (NullFechaException e) {
+			System.out.println ("error: "+ e.getMessage());
+		
+		}
+		
+	}
+	public static LocalDate BuscaFecha (String cadena) throws NullFechaException, DosFechasException {
+		DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		int longitud=10;
+		String posiblefechaS;
+		LocalDate fecha1=null;
+		for(int i=0; i<cadena.length()-longitud;i++) {
+			if(Character.isDigit(cadena.charAt(i))) {
+				posiblefechaS=cadena.substring(i, i+longitud);
+				try {
+						LocalDate fechaEncontrada = LocalDate.parse(posiblefechaS, patron);
+						if(fecha1 != null) {
+							fecha1=fechaEncontrada;
+						}else {
+							throw new DosFechasException("hay mas de una fecha en la cadena, la primera encontrada es"+ patron.format(fecha1));	
+						}
+					i=i+longitud-1;
+				}catch(DateTimeParseException e) {
+						}
+					}
+				}
+			if (fecha1==null) {
+				throw new NullFechaException("no se ha encontrado ninguna fecha");
+			}		
+		return fecha1;
+		
+	}
+}

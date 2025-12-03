@@ -1,0 +1,45 @@
+package desafios;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class ejer4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		String clave="", color="*", posicion="X", pista="0123";
+		boolean fin=false;
+		clave=GenerarCodigo();
+		System.out.println(clave);
+		do {
+			System.out.println("las siglas posibles son RAMVNI");
+			System.out.println("introduce un codigo ");
+			String codigo=sc.nextLine();
+			codigo=codigo.toUpperCase();
+			for(int i=0; i<=3; i++) {
+				if(codigo.charAt(i) == clave.charAt(i) && codigo.indexOf(i) == clave.indexOf(i)) {
+					pista=pista.replace((char) i, '*');}//mal
+				else
+					if(codigo.charAt(i) == clave.charAt(i))//mal
+						pista= pista +color;
+				
+				}
+			System.out.println(pista);//
+			
+		}while(!fin);
+	}
+
+	public static String  GenerarCodigo() {
+		String cadena="RAMVNI", secreto;
+		char primer, segun, tercer, cuarto;
+		Random r = new Random();
+		int digit1, digit2, digit3, digit4;
+		primer=cadena.charAt( digit1=r.nextInt(6));
+		segun=cadena.charAt(digit2=r.nextInt(6));
+		tercer=cadena.charAt(digit3=r.nextInt(6));
+		cuarto=cadena.charAt(digit4=r.nextInt(6));
+		secreto=""+ primer + segun + tercer + cuarto;
+		return secreto;
+	}
+}

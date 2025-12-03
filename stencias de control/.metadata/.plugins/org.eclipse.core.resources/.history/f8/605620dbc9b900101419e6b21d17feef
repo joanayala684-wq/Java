@@ -1,0 +1,120 @@
+package Practicaexamen;
+
+public class dorsalescorregido {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		sc.useLocale(Locale.ENGLISH);
+
+		char otra;
+		do {
+			int cF = 0, cM = 0, nulosTotales = 0, contSuma = 0;
+			String dorsal, paisMayorFem = "";
+			char categoria;
+			boolean esNulo, siguiente;
+			double salto, saltoMayor, saltoMayorFem = 0, sumaSaltosMasc = 0;
+			do {
+				saltoMayor = 0;
+				siguiente = false;
+				int nulos = 0;
+				do {
+					System.out.print("Dorsal: ");
+					dorsal = sc.nextLine();
+				} while (!validarDorsal(dorsal));
+
+				do {
+					System.out.print("Categoria: ");
+					categoria = sc.nextLine().charAt(0);
+					categoria = Character.toUpperCase(categoria);
+				} while (categoria != 'M' && categoria != 'F');
+
+				if (categoria == 'M') {
+					cM++;
+				} else {
+					cF++;
+				}
+
+				for (int i = 1; i <= 3; i++) {
+					System.out.print("Salto Nº" + i + ": ");
+					salto = sc.nextDouble();
+					esNulo = validarSalto(categoria, salto);
+					if (salto == -1) {
+						siguiente = true;
+						break;
+					}
+
+					if (esNulo) {
+						nulos++;
+					}
+					if (salto > saltoMayor) {
+						saltoMayor = salto;
+					}
+				}
+				nulosTotales += nulos;
+				if (!(nulos == 3 || siguiente)) {
+					System.out.println("Mejor salto: " + saltoMayor);
+					if (categoria == 'M') {
+						contSuma++;
+						sumaSaltosMasc = sumaSaltosMasc + saltoMayor;
+					} else {
+						if (saltoMayor > saltoMayorFem) {
+							saltoMayorFem = saltoMayor;
+							paisMayorFem = dorsal.substring(0, 3);
+						}
+					}
+				} else {
+					System.out.println("Saltador/a descalificado!");
+				}
+				System.out.println();
+				sc.nextLine();
+			} while (cF < 2 || cM < 2);
+			System.out.println("Mejor Salto Femenino: " + saltoMayorFem + " " + paisMayorFem);
+			System.out.println("Media de Saltos Masculinos: " + (sumaSaltosMasc / contSuma));
+			System.out.println("Nulos: " + nulosTotales);
+
+			do {
+				System.out.print("Desea anotar otra prueba?(s/n): ");
+				otra = sc.nextLine().charAt(0);
+				otra = Character.toUpperCase(otra);
+			} while (otra != 'S' && otra != 'N');
+			System.out.println();
+		} while (otra == 'S');
+		sc.close();
+	}
+
+	public static boolean validarDorsal(String dorsal) {
+		String tres;
+		int num;
+		if (dorsal.length() != 6)
+			return false;
+		tres = dorsal.substring(0, 3);
+		if (!tres.equals(tres.toUpperCase()))
+			return false;
+		for (int i = 3; i < dorsal.length(); i++) {
+			num = dorsal.charAt(i);
+			if (num > '9' || num < '0') {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static boolean validarSalto(char c, double s) {
+		if (c == 'M') {
+			if (s < 8.22) {
+				return true;
+			}
+		} else {
+			if (s < 6.82) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+
+	}
+
+}

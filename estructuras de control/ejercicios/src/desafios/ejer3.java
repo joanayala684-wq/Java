@@ -1,0 +1,64 @@
+package desafios;
+
+import java.util.Random;
+
+public class ejer3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int juego1=501, juego2 = 501;
+		for (int i = 1; i <= 20; i++) {
+			System.out.println("inicio ronda" +i );
+			System.out.println("inicio jugador 1");
+			juego1=RondaJugador(juego1);
+			System.out.println("fin ronda del jugador, tienes " +juego1+ "puntos");
+			
+			System.out.println("inicio jugador 2");
+			juego2=RondaJugador(juego2);
+			System.out.println("fin ronda del jugador, tienes " +juego2+ "puntos");
+			System.out.println("fin ronda"+ i);
+		}
+		System.out.println("el resultado final es:");
+		System.out.println("el jugador uno tiene " + juego1 + " puntos");
+		System.out.println("el jugador dos tiene " + juego2 + " puntos");
+		if (juego1 < juego2)
+			System.out.println("el ganador es el jugador 1");
+		else if (juego1 > juego2)
+			System.out.println("el ganador es el jugador 2");
+		else
+			System.out.println("se ha producido un empate");
+	}
+	public static int RondaJugador (int puntuacion_actual) {
+		int juego=puntuacion_actual;
+		Random r = new Random();
+		for (int i = 1; i <= 3; i++) {
+			int inicioronda=juego;
+			int lanzar = r.nextInt(20) + 1;
+			int comodin=r.nextInt(3)+1;
+			System.out.println("se ha sacado" + lanzar*comodin + "puntos");
+			if (juego >= lanzar*comodin)
+				juego = juego - lanzar*comodin;
+		
+			else if (juego < lanzar*comodin) {
+				System.out.println("juego anulado");
+				juego = inicioronda;
+				System.out.println("fin ronda del jugador, tienes " +juego+ "puntos");
+				break;}
+			if(juego==1) {
+				System.out.println("bust, vuelves a la puntuacion inicial de la ronda");
+				juego=inicioronda;
+				break;
+			}
+			if (juego == 0 && comodin==2) {
+				System.out.println("felicidades has ganado");
+				break;
+			}
+			else if (juego==0 && comodin!=2) {
+				System.out.println("mala suerte necesitas un double para ganar");
+				juego=inicioronda;
+				break;}
+		}
+	return juego;
+	}
+
+}

@@ -1,0 +1,35 @@
+package Practica6bis;
+
+import java.util.Scanner;
+
+public class ejercicio1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int limite = 10;
+        int contadorPrimos = 0;
+
+        System.out.println("Iniciando la búsqueda de números primos hasta " + limite);
+        for (int i = 1; i <= limite; i++) {
+            boolean esPrimo =true;
+            for (int j = 2; j < i; j++) {
+               
+                if (i % j == 0) {
+                    esPrimo = false;
+                    break;
+                }
+            }
+
+           
+            if (esPrimo) {
+            	System.out.println(i);
+                contadorPrimos++;}
+                            }
+        
+
+        System.out.println("Resultado Final: Se encontraron " + contadorPrimos + " números primos.");	
+		}
+		
+	}
+
+

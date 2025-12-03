@@ -1,0 +1,55 @@
+package Strings;
+
+import java.util.Scanner;
+
+public class ejer3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		String nombre = null;
+		String apellido;
+		String segundo = null;
+		String continuar ="S";
+		int duda, duda2;
+		
+		do{
+		System.out.println("introduce tu nombre");
+		nombre=sc.nextLine();
+		System.out.println("introduce tu apellido");
+		apellido=sc.nextLine();
+		duda= apellido.length();
+		if (apellido.length() <3) {
+			System.out.println("introduce tu segundo apellido");
+			segundo=sc.nextLine();
+		} 
+		String codigogenerado=codigo(nombre, apellido, segundo);
+		System.out.println("el codigo generado es " + codigogenerado);		
+						
+		System.out.println("deseas generar otro codigo");
+		continuar=sc.nextLine();
+		}while(continuar.equalsIgnoreCase("S")); 
+		}
+		public static String codigo (String nombre, String apellido, String segundo) {
+		String n=nombre.toUpperCase();
+		String a1=apellido.toUpperCase();
+		String a2=segundo.toUpperCase();
+		String inicialnombre=n.substring(0, 1);
+		String parteApellido="";
+		if (a1.length()>=3) {
+			parteApellido=a1.substring(0,3);
+		}
+		else 
+			if (a2.length() <= 3) {
+				parteApellido=a2.substring(0, 3); }
+			else 
+				if(a1.length() > a2.length()) {
+					parteApellido=a1;}
+			
+				else {
+					parteApellido=a2;
+				}
+		return inicialnombre+parteApellido;
+		}
+
+}

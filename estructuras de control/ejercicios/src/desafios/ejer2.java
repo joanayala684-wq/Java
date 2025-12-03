@@ -1,0 +1,48 @@
+package desafios;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class ejer2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Random r=new Random();
+		int cont1=0, cont2=0, cont3=0;
+		for(int i=1; i <=5; i++) {
+		System.out.println("jugador uno lanza la moneda");
+		int player1=r.nextInt(2)+1;
+		System.out.println("jugador dos lanza la moneda");
+		int player2=r.nextInt(2)+1;
+		System.out.println("jugador tres lanza la moneda");
+		int player3=r.nextInt(2)+1;
+		if(player1==player2) {
+			System.out.println("gana player 3");
+			cont3++;}
+		else
+			if(player1==player3) {
+				System.out.println("gana player 2");
+				cont2++;}
+			else
+				if(player2==player3) {
+				System.out.println("gana player 1");
+				cont1++;}
+				else
+					if(player2==player3 && player3==player1)
+						System.out.println("se ha producido un empate");
+		System.out.println("fin ronda " +i);
+				}
+		System.out.println("el resultado final es el siguiente ");
+		System.out.println("jugador 1 tiene " +cont1+ "puntos");
+		System.out.println("jugador 2 tiene " +cont2+ "puntos");
+		System.out.println("jugador 3 tiene " +cont3+ "puntos");
+
+					
+		
+		
+		
+		
+			}
+
+}

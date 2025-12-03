@@ -1,0 +1,26 @@
+package desafios;
+
+import java.util.Random;
+
+public class ejer4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String clave="";
+		clave=GenerarCodigo();
+		System.out.println(clave);
+	}
+
+	public static String  GenerarCodigo() {
+		String cadena="RAMVNI", secreto;
+		char primer, segun, tercer, cuarto;
+		Random r = new Random();
+		int digit1, digit2, digit3, digit4;
+		primer=cadena.charAt( digit1=r.nextInt(6));
+		segun=cadena.charAt(digit2=r.nextInt(6));
+		tercer=cadena.charAt(digit3=r.nextInt(6));
+		cuarto=cadena.charAt(digit4=r.nextInt(6));
+		secreto=""+ primer + segun + tercer + cuarto;
+		return secreto;
+	}
+}

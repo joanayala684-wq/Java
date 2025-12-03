@@ -1,0 +1,25 @@
+package Practicafechas;
+
+import java.time.Duration;
+import java.time.LocalTime;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
+public class ejer8 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Random random = new Random();
+		int resultado = 0;
+		int contadorseis=0;
+		final long DURACION_MS = TimeUnit.SECONDS.toMillis(1);
+		long tiempoFin= System.currentTimeMillis() + DURACION_MS;
+		while(System.currentTimeMillis() < tiempoFin) {
+			resultado = random.nextInt(6) + 1;
+			if (resultado == 6) {
+	            contadorseis++;
+        }}
+		System.out.println(" El número total de seises obtenidos es: **" + contadorseis + "**");
+	}
+
+}

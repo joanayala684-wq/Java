@@ -1,0 +1,47 @@
+package Practicafechas;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.util.Scanner;
+
+public class ejer4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		LocalDate fecha1=null, fecha2=null;
+		boolean correcto=false;
+		DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yy");
+		do {
+			System.out.println("introduce una fecha dd/MM/yy");
+			String fechaS1=sc.nextLine();
+		
+				try {
+					fecha1=LocalDate.parse(fechaS1, patron);
+					correcto=true;
+							
+					
+				} catch (DateTimeParseException e) {
+					// TODO Auto-generated catch block
+					System.out.println("fecha incorrecta");
+				}
+		}while(!correcto);
+		correcto=false;
+		do {
+			System.out.println("introduce la segunda fecha dd/MM/yy");
+			String fechaS2=sc.nextLine();
+			try {
+				fecha2=LocalDate.parse(fechaS2, patron);
+				correcto=true;
+			}catch (DateTimeParseException e){
+				System.out.println("fecha incorrecta");}
+		}while(!correcto);
+		long difftotaldias;
+			difftotaldias= Math.abs(ChronoUnit.DAYS.between(fecha1,fecha2));
+	
+		System.out.println("la diferencia de dias entre las fechas es de " +difftotaldias);
+	}
+}

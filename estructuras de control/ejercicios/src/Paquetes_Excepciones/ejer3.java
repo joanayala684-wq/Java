@@ -1,0 +1,76 @@
+package Paquetes_Excepciones;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.zip.DataFormatException;
+
+public class ejer3 {
+	static Scanner sc;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*3. Haz un juego interactivo donde el ordenador genera una fecha secreta y el usuario
+		trata de averiguarla. El usuario va haciendo preguntas en las que indica una fecha y el
+		ordenador responde si la fecha secreta es mayor o menor que la introducida. El juego
+		termina cuando se averigua la fecha. Los casos en los que el usuario no introduzca una
+		fecha con un formato válido deben manejarse con excepciones.*/
+		sc = new Scanner(System.in);
+		String fechaS, fin="";
+		LocalDate fecha=null, fechasecreta;
+		boolean correcto=false, finalJuego=false;
+		
+		DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		fechasecreta=GenerarFechaSecret();
+		do {
+			do { 
+				
+				System.out.println("introduce una fecha ej: dd/mm/yyyy");
+				fechaS=sc.nextLine();
+				 try {
+					fecha=LocalDate.parse(fechaS,patron);
+					correcto=true;
+				} catch (DateTimeParseException e) {
+					// TODO Auto-generated catch block
+					System.out.println("introduce una fecha valida");
+				} catch (NullPointerException e) {
+					// TODO Auto-generated catch block
+					System.out.println("introduce una fecha");
+				}
+					 	 
+			}while(!correcto);
+	
+			if(fechasecreta.equals(fecha)) {
+				System.out.println("felicidades has ganado");
+				finalJuego=true;
+			}
+			else 
+				if(fechasecreta.isAfter(fecha)) {
+					System.out.println("la fecha secreta es posterior a la ingresada");
+					
+					}
+				
+				else
+					if(fechasecreta.isBefore(fecha)) {
+						System.out.println("la fecha secreta es anterior a la ingresada");
+						
+						}
+	
+		}while(!finalJuego);
+		
+		System.out.println("la fecha secreta es " + patron.format(fechasecreta));
+		
+	}
+public static LocalDate GenerarFechaSecret  () {
+	DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	LocalDate fechaInicio =LocalDate.of(2000, 1, 1);
+	LocalDate fechaFin = LocalDate.of(2030, 12, 31);
+	long dias=ChronoUnit.DAYS.between(fechaInicio, fechaFin);
+	Random r=new Random();
+	long diasaleatorios=r.nextLong(dias +1);
+	LocalDate fechasecreta = fechaInicio.plusDays(diasaleatorios);
+	return fechasecreta;
+}
+}

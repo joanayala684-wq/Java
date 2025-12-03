@@ -1,0 +1,45 @@
+package EjerString;
+
+import java.util.Scanner;
+
+public class ejer3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner (System.in);
+		String nombre = "", apellido="", segundo="", codigo;
+		do {
+			System.out.println("introduce tu nombre");
+			nombre=sc.nextLine();
+			System.out.println("introduce tu primer apellido");
+			apellido=sc.nextLine();
+			if(apellido.length()<3) {
+				System.out.println("introduce tu segundo apellido");
+				segundo=sc.nextLine(); }
+			codigo=generarcodigo(nombre, apellido, segundo);
+			System.out.println("tu codigo asignado es " +codigo);
+			
+		}while(!nombre.equalsIgnoreCase("fin"));
+				
+	}
+	public static String generarcodigo (String nombre, String apellido, String segundo) {
+		String codigo = "";
+		String parteapellido="";
+		nombre=nombre.substring(0,1);
+		if(apellido.length()>3) 
+			parteapellido=apellido.substring(0,3);
+		else 
+			if(segundo.length()>3 )
+				parteapellido=segundo.substring(0, 3);
+			else 
+				if(apellido.length()>segundo.length())
+					parteapellido=apellido;
+				else 
+					parteapellido=segundo;
+		codigo=nombre+parteapellido;
+		codigo=codigo.toUpperCase();
+		return codigo;
+	}
+	
+}
+

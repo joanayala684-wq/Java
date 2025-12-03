@@ -1,0 +1,32 @@
+package Strings;
+
+import java.util.Scanner;
+
+public class ejer3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		String nombre = null;
+		String apellido;
+		String segundo;
+		int duda;
+		while(!nombre.equalsIgnoreCase("fin")) {
+		System.out.println("introduce tu nombre");
+		nombre=sc.nextLine();
+		System.out.println("introduce tu apellido");
+		apellido=sc.nextLine();
+		duda= apellido.length();
+		if (duda<3) {
+			System.out.println("introduce tu segundo apellido");
+			segundo=sc.nextLine();}
+		 
+			System.out.println("introduce tu nombre");
+			nombre=sc.nextLine();
+		}
+		
+	}
+	public static String crearcodigo (String nombre, String apellido, String segundo) {
+		codigo=
+		return segundo;}
+}

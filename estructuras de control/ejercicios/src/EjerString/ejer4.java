@@ -1,0 +1,37 @@
+package EjerString;
+
+import java.util.Scanner;
+
+public class ejer4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner (System.in);
+		String dni="";
+		do {
+			System.out.println("introduce tu dni");
+			dni=sc.nextLine();
+			boolean verifica=validacionDni(dni);
+			if (verifica)
+				System.out.println("ok");
+			else 
+				System.out.println("poliiii");
+		}while(dni.length()!=9);
+		
+	}
+	public static boolean validacionDni(String dni) {
+
+	 String numeros=dni.substring(0,8);
+	 char letra=dni.charAt(dni.length()-1);
+	 letra=Character.toUpperCase(letra);
+	 String algoritmo="TRWAGMYFPDXBNJZSQVHLCK";
+	 String patron = "^[0-9]{1,8}[A-Z]$";
+	 if (!dni.matches(patron))
+			return false;
+	 int numero=Integer.parseInt(numeros);
+	 int resto=numero % 23;
+		if(algoritmo.charAt(resto)!=letra)
+			return false;
+	 return true;
+	}
+}

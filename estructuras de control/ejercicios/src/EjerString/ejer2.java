@@ -1,0 +1,26 @@
+package EjerString;
+
+import java.util.Scanner;
+
+public class ejer2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String pais="";
+		char letra;
+		int cont=0;
+		Scanner sc=new Scanner (System.in);
+		System.out.println("introduce una letra");
+		letra=sc.nextLine().charAt(0);
+		letra=Character.toUpperCase(letra);
+		do {
+			System.out.println("introduce un pais");
+			pais=sc.nextLine();
+			if(pais.charAt(0)==letra)
+				cont++;
+		
+		}while(!pais.equalsIgnoreCase("fin"));
+		System.out.println("se han introducido" +cont+ "paises que empiezan por "+letra);
+	}
+
+}

@@ -1,0 +1,26 @@
+package Paquetes_Excepciones;
+
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class ejer5 {
+	static Scanner sc;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+/*Lee una cadena e intenta extraer una fecha con el formato dd/mm/yyyy de su
+contenido (la cadena puede tener otras cosas, por ejemplo “Yo nací el 29/02/1998”).
+Los casos en los que no se encuentre ninguna fecha o se encuentren varias deberán
+manejarse con excepciones.*/
+		sc = new Scanner(System.in);
+		String cadena;
+		boolean correcto=false;
+		DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		do {
+			System.out.println("introduce una cadena");
+			cadena=sc.nextLine();
+		
+		}while(correcto);
+		
+	}
+
+}

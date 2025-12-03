@@ -1,0 +1,33 @@
+package Practicafechas;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+public class ejer7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		LocalDate fechaNacimiento=null;
+		boolean correcto=false;
+		int edad;
+		DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		do {
+			System.out.println("introduce la fecha en formato dd/mm/yyyy");
+			String FechaNaci=sc.nextLine();
+			try {
+				fechaNacimiento=LocalDate.parse(FechaNaci, patron);
+				correcto=true;
+			}catch(DateTimeParseException e) {
+				System.out.println("fecha incorrecta");
+			}
+		}while(!correcto);
+		LocalDate fechaActual = LocalDate.now() ;
+		long diff = Math.abs(ChronoUnit.YEARS.between(fechaActual,fechaNacimiento));
+		System.out.println("tienes "+ diff +"años");
+	}
+
+}

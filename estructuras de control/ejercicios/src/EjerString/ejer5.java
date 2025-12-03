@@ -1,0 +1,39 @@
+package EjerString;
+
+import java.util.Scanner;
+
+public class ejer5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner (System.in);
+		String cadena1="", cadena2="", cadena3="";
+		
+		do {
+			System.out.println("escribe la cadena");
+			cadena1=sc.nextLine();
+			System.out.println("escribe la cadena");
+			cadena2=sc.nextLine();
+			System.out.println("escribe la cadena");
+			cadena3=sc.nextLine();
+			String temp;
+			
+			for(int i =1; i<3; i++) {
+				if(cadena1.compareTo(cadena2)>0) {
+					temp=cadena1;
+					cadena1=cadena2;
+					cadena2=temp; }
+				if (cadena2.compareTo(cadena3)>0){	
+					temp=cadena2;
+					cadena2=cadena3;
+					cadena3=temp;}
+					
+			}
+			System.out.println(cadena1);
+			System.out.println(cadena2);
+			System.out.println(cadena3);
+		}while(!cadena1.equalsIgnoreCase("fin"));
+	}
+	
+
+}

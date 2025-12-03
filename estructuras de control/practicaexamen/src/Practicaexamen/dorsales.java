@@ -1,0 +1,86 @@
+package Practicaexamen;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class dorsales {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*Su dorsal: validar que sea una cadena de longitud 6, con 3 letras en
+		mayúsculas, que es el país, y 3 dígitos. Leedlo hasta que sea correcto. Usad
+		una función para validar el código (1 pto)
+		- Su categoría: M (masculino) o F (femenino), leedla hasta que sea correcta
+		(0,5 pto).
+		- A continuación el atleta realiza 3 saltos de longitud (usad bucle) (1 ptos).
+		Codificar una función que me diga si un salto es nulo (1 pto)
+		Tenemos en cuenta que se considera un salto nulo:
+		Por debajo de 6.82 metros en categoría femenina.
+		Por debajo de 8.22 metros en categoría masculina.
+		Si los tres saltos son nulos, o se anota un -1 en la longitud de uno de los
+		saltos, el atleta queda descalificado en ese momento y se pasa al siguiente. (1 pto) En
+		otro caso nos quedamos con la longitud del salto mayor de este atleta y lo mostramos
+		por pantalla.(1 pto)
+		El proceso termina cuando se hayan anotado al menos 2 atletas de cada categoria.(1
+		pto)
+		Mostrad al terminar:
+		- El mejor salto femenino y el país de procedencia de la atleta. (1 pto)
+		- La longitud media de los saltos los atletas masculinos (1 pto)
+		- El total de saltos nulos realizados.(0,5 pto)
+		Modificad el programa para que el usuario pueda introducir tantas pruebas de salto
+		como quiera, mostrando al finalizar el número total de saltos realizados . (1 pto)*/
+		Scanner sc=new Scanner(System.in);
+		String dorsal;
+		Random r=new Random();
+		boolean validar=false, correcto=false;
+		do {
+		System.out.println("introducir el dorsal");
+		dorsal=sc.nextLine();
+		validar=validardorsal(dorsal);
+		if(validar)
+			correcto=true;
+		else if(!validar)
+			System.out.println("dorsal no encontrada, vuelve a intentarlo");
+		}while(correcto==false);
+		correcto=false;
+		String categoria;
+		do {
+			System.out.println("introduce la categoria M o F");
+			categoria=sc.nextLine();
+			if(categoria.equalsIgnoreCase("m") || categoria.equalsIgnoreCase("f")) {
+				correcto=true;
+			}
+			else
+				System.out.println("caracter incorrecto, vuelve a intentarlo");
+		}while(!correcto);
+		correcto=false;
+		boolean validarSalto;
+		double salto=0;
+		for(int i=0; i>=3;i++) {
+			salto=r.nextDouble(10)+7;
+			validarSalto=isNull(categoria, salto);
+			
+		}
+		
+	}
+	public static boolean validardorsal (String dorsal) {
+		dorsal=dorsal.toUpperCase();
+	  if (dorsal.length()!=6) 
+	   return false;
+	  for(int i=0; i>=2; i++) {
+	  if(!Character.isLetter(dorsal.charAt(i)))
+		  return false;}
+	  for(int j=3; j>=dorsal.length(); j++) {
+		  if(!Character.isDigit(dorsal.charAt(j)))
+			  return false;}
+	  
+	  return true;
+	}
+	public static boolean isNull (String categoria, double salto) {
+		if(salto<6.82 && categoria.equalsIgnoreCase("f"))
+			return true;
+		else if(salto<8.22 && categoria.equalsIgnoreCase("m"))
+			return true;
+		return false;
+	}
+}

@@ -1,0 +1,71 @@
+package Practicaexamen;
+
+import java.util.Scanner;
+
+public class restaurante {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+	int comensales,party,  aforo=0, opcionmenu, copa, barra, cuenta ;
+	boolean pregunta, revision;
+	System.out.println("introduce el numero de personas de tu reserva");
+	comensales=sc.nextInt();
+	do {
+		while (comensales >=1 && aforo >= comensales ) {
+		System.out.println("elige una opcion de menu");
+		System.out.println("Opcion 1: menu economico = 25$");
+		System.out.println("Opcion 2: menu economico = 35$");
+		System.out.println("Opcion 3: menu economico = 50$");
+		opcionmenu=sc.nextInt();
+		revision=validaropcion(opcionmenu);
+		if (revision ==false) {
+			System.out.println("error de dato, uelve a intentarlo");}
+		else 
+			System.out.println("Habra una fiesta despies de la cena elige");
+		System.out.println("2 copas por 9$ ");
+		copa=sc.nextInt();
+		System.out.println("barra libre");
+		barra=sc.nextInt();
+		party=barra+copa;
+		if (party != comensales) {
+			System.out.println("error de dato");
+		}
+		else 
+			if (party==comensales) {
+			cuenta=calcular_precio(comensales, opcionmenu, copa, barra);
+			System.out.println("el total de la cuenta es de:" + cuenta);
+			System.out.println("desea continuar con la reserva");
+			pregunta=sc.nextBoolean();
+			if (pregunta ==true) {
+				System.out.println("resefva confirmada, gracias" );
+				aforo=aforo + comensales;}
+			else
+				System.out.println("reserva cancelada, gracias" );
+			}
+		}
+	}while(comensales !=-1);
+	
+	}
+	
+	public static int calcular_precio( int comensales, int opcionmenu, int copa, int barra) {
+		int total = 0;
+		switch(opcionmenu){
+		case 1:
+			total= (comensales * 25)+ (copa * 9) +(barra *30);
+			return total;
+		case 2:
+			total= (comensales * 35)+ (copa * 9) +(barra *30);
+			return total;
+		case 3:
+			total= (comensales * 50)+ (copa * 9) +(barra *30);
+			return total;}
+		return -1;
+	}
+	public static boolean validaropcion (int opcion) {
+		if (opcion ==1 || opcion ==2|| opcion==3) {
+			return true;}
+		else 
+			return false;}
+			
+}

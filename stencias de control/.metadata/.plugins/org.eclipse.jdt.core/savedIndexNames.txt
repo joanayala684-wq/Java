@@ -1,0 +1,7 @@
+INDEX VERSION 1.134+C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\programacion\stencias de control\.metadata\.plugins\org.eclipse.jdt.core
+3131936239.index
+2835969203.index
+805315849.index
+3373842974.index
+1865797976.index
+2106930526.index

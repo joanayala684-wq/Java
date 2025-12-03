@@ -1,0 +1,14 @@
+package Practicafechas;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class ejer5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		LocalTime hora1, hora2;
+		
+	}
+
+}

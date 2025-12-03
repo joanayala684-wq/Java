@@ -1,0 +1,29 @@
+package Strings;
+
+import java.util.Scanner;
+
+public class ejer6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in); 
+		String original;
+		System.out.println("introduce una palabra");
+		original=sc.nextLine();
+		String limpia=original.toLowerCase();
+		String invertida = "";
+		
+	for (int i =limpia.length()-1; i<=0; i--) {
+		char caracter =limpia.charAt(i);
+		invertida =invertida + caracter;
+	}
+	if (limpia.equals(invertida)) {
+		System.out.println("es un palindromo" + limpia + "==" + invertida);
+		
+	}
+	else {
+		System.out.println(" no es un palindromo" +limpia + "!=" + invertida );
+	}
+	}
+
+}

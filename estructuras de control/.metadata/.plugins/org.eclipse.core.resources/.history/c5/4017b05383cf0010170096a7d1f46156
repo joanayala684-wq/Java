@@ -1,0 +1,54 @@
+package desafios;
+
+import java.util.Scanner;
+
+public class examen {
+	static Scanner sc;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		sc=new Scanner(System.in);
+/*Objetivo: Crear un programa que valide un código de producto, extraiga su número de serie, y use excepciones para manejar códigos inválidos o incorrectos.
+Formato Requerido: El código de producto debe tener exactamente 8 caracteres y seguir el patrón: LL-NNNN
+LL: Dos letras mayúsculas (código de país/región)
+-: Un guion.
+NNNNN: Cinco dígitos (número de serie).
+Requisitos de Implementación:
+Crea dos excepciones personalizadas en el paquete Paquetes_Excepciones:
+FormatoInvalidoException: Para errores de longitud o si el guion no está en la posición correcta (índice 2).
+CaracterInvalidoException: Para cuando se encuentre un carácter no numérico en la sección NNNNN.
+Implementa la función estática procesarCodigo(String codigo) que lanza estas excepciones.
+Dentro de procesarCodigo, utiliza aserciones (assert) para verificar que el número de serie tiene exactamente 5 caracteres antes de intentar parsearlo.
+En el método main, usa un bloque try-catch para probar la función con diferentes códigos.*/
+boolean correcto=false;
+try {
+	correcto=ValidarCodigo();
+	System.out.println("mkiaw");
+} catch (InvaliCodException e) {
+	System.out.println(e.getMessage());
+}catch (InvaliLenghtCodException e) {
+	System.out.println(e.getMessage());
+}catch (GuionException e) {
+	System.out.println(e.getMessage());
+		}
+
+	}
+public static boolean ValidarCodigo () throws InvaliCodException, InvaliLenghtCodException, GuionException {
+	System.out.println("introduce un codigo de producto");
+	String codigo=sc.nextLine();
+	String numeros=codigo.substring(3,7);
+	assert numeros.length()==5 :"el numero de expedicion debetener de 5 caracteres.";
+	String patron= "^[A-Z]{2}-[0-9]{5}$";
+	if(codigo.length()!=8) {
+		throw new InvaliLenghtCodException ("el codigo debe ser de 8 caracteres");
+	}
+	if(codigo.charAt(2) != '-') {
+		throw new GuionException ("coloca bien el guion");
+	}
+	if(!codigo.matches(patron)) {
+		throw new InvaliCodException ("codigo invalido");
+	}
+	
+	return true;
+}
+
+}

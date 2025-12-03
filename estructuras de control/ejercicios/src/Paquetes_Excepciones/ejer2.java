@@ -1,0 +1,50 @@
+package Paquetes_Excepciones;
+
+import java.util.Scanner;
+
+public class ejer2 {
+	static Scanner sc;
+	public static void main(String[] args) throws CadenaNullException {
+		// TODO Auto-generated method stub
+/*2. Lee dos cadenas. Haz una función que devuelva el número de veces que la primera
+está incluida en la segunda. Devuelve una excepción propia si cualquiera de las dos
+está vacía.*/
+		String cadena1=null, cadena2=null;
+		int buscar=0;
+		sc = new Scanner(System.in);
+		do {
+			System.out.println("introduce una cadena larga");
+			cadena1=sc.nextLine();
+			System.out.println("introduce una cadena corta");
+			cadena2=sc.nextLine();
+			if(cadena1.length()<cadena2.length()) {
+				System.out.println("orden de las cadenas incorrecto ");
+			}
+				
+		}while(cadena1.length()<cadena2.length());
+		try {
+			buscar=Radar(cadena1, cadena2);
+		} catch (CadenaNullException e) {
+			System.out.println("rellenar una cadena");
+			return;
+		
+		}
+		System.out.println("el numero de veces que la cadena corta se encuentra en la larga es de" + buscar);
+		
+		
+		
+	}
+	public static int Radar (String cadena1,String cadena2) throws CadenaNullException {
+		int cont=0;
+		if(cadena1==null || cadena2==null||cadena1.isEmpty()||cadena2.isEmpty()) {
+			throw new CadenaNullException ("una cadena esta vacia");}
+		else 
+			for (int i = 0; (i = cadena1.indexOf(cadena2, i)) != -1; i += cadena2.length() ){
+				cont++;
+			}
+		return cont;
+		
+	}
+
+	}
+

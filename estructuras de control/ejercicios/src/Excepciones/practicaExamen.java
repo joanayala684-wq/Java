@@ -1,0 +1,135 @@
+package Excepciones;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.util.Scanner;
+
+public class practicaExamen {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * Se quiere calcular el precio de un abono teatro de un usuario. Se piden los
+		 * siguientes datos del usuario mientras sean incorrectos. - Fecha de
+		 * nacimiento, leedla en un String con 4 dígitos para el año. Validad que es
+		 * correcta utilizado excepciones. Mostrad la edad. (3 pto) - Tipo de abono, un
+		 * String que puede tomar los siguientes valores: “Normal”, “Familiar”, “VIP”
+		 * ignorando mayúsculas y minúsculas. (1 pto). - Nombre de usuario que tiene que
+		 * empezar por letra (en mayúscula o minúscula) y contener dígitos y letras en
+		 * mayúsculas o minúsculas. En total con una longitud de 5 a 8. Usad patrón (1
+		 * pto).
+		 * 
+		 * Si los datos son correctos llamad a una función que calcule el importe. Los
+		 * abonos normales son 10 euros, los VIP 50, los familiares 30. Si el usuario es
+		 * jubilado (65 años o más) tiene un descuento del 20% y si es menor de 18 del
+		 * 10%. Si ha elegido abono familiar y tiene menos de 18 años devolver una
+		 * excepción propia con vuestro . (2 ptos) Introducir una aserción en la función
+		 * anterior para comprobar que el tipo de abono es el correcto. Si el cálculo
+		 * del importe es correcto, generar una contraseña de longitud 7 que tenga los
+		 * dos primeros caracteres del tipo de abono en mayúsculas y a continuación 5
+		 * dígitos aleatorios. Mostrad la contraseña por pantalla (2 ptos)
+		 */
+		LocalDate fechaNac = null;
+		DateTimeFormatter patron = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		boolean validar = false;
+		String bono, numUsu;
+		double importe;
+		int edad = 0;
+		Scanner sc = new Scanner(System.in);
+		do {
+			System.out.println("introduce tu fecha de nacimineto");
+			String fechaNacS = sc.nextLine();
+			try {
+				fechaNac = LocalDate.parse(fechaNacS, patron);
+				validar = true;
+				edad = CalcularEdad(fechaNac);
+				System.out.println("tienes" + edad + "años");
+			} catch (DateTimeParseException e) {
+				// TODO Auto-generated catch block
+				System.out.println("introduce una fecha valida");
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				System.out.println("no se admite campo sin datos");
+			}
+
+		} while (!validar);
+		validar = false;
+		do {
+		
+			System.out.println("tipo de bono");
+			 bono = sc.nextLine();
+			if (bono.equalsIgnoreCase("familiar") || bono.equalsIgnoreCase("normal") || bono.equalsIgnoreCase("vip")) {
+				validar = true;
+			}
+
+		} while (!validar);
+		validar = false;
+
+		do {
+			System.out.println("introduce tu numero de usuario");
+			 numUsu = sc.nextLine();
+			boolean verificar = ValidarUsu(numUsu);
+			validar = true;
+		} while (!validar);
+		try {
+			
+			importe=CalcularImporte(bono, numUsu,edad);
+			System.out.println("El importe a pagar es de:"+importe+" euros");
+		} catch (FalloSistemException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Se ha producido un error al calcular el importe");
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	public static int CalcularEdad(LocalDate fechaNac) {
+		DateTimeFormatter patron = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate fechaActual = LocalDate.now();
+		int edad = (int) Math.abs(ChronoUnit.YEARS.between(fechaActual, fechaNac));
+		return edad;
+
+	}
+
+	public static boolean ValidarUsu (String numUsu) {
+		String patron = "^([a-zA-Z][a-zA-Z0-9]){5,8}$";
+		 if (!numUsu.matches(patron))
+				return false;
+		return true;
+		
+	}
+
+	public static double CalcularImporte (String bono, String numUsu, int edad) throws FalloSistemException {
+		final double vip=50, fami=30, normal=10; 
+		double importe=0;
+		bono=bono.toUpperCase();
+		switch(bono) {
+		case("FAMILIAR"):
+			importe=fami;
+		break;
+		case("NORMAL"):
+			importe=normal;
+		break;
+		case("VIP"):
+			importe=vip;
+		
+		break;
+		}
+		if(edad<18) {
+				if(!bono.equalsIgnoreCase("FAMILIAR"))
+					importe=importe*0.9;
+				else 
+				throw new FalloSistemException("No se permite tipo familiar a menores");
+
+		}
+		else
+			if(edad>=65) {
+				importe=importe*0.8;
+			}
+		return importe;
+		
+	
+	}}

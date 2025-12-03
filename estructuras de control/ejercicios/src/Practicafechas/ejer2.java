@@ -1,0 +1,50 @@
+package Practicafechas;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+public class ejer2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		LocalDate fecha1 = null, fecha2=null;
+		boolean correcto=false;
+		DateTimeFormatter patron=DateTimeFormatter.ofPattern("dd/MM/yy");
+		do {
+		System.out.println("anota la fecha en formato dd/mm/yy:");
+		String fecha1S=sc.nextLine();
+		try {
+			fecha1=LocalDate.parse(fecha1S, patron);
+			correcto=true;
+		}catch (DateTimeParseException e) {
+			System.out.println("fecha incorrcta");
+		}catch (NullPointerException e) {
+			System.out.println("no dejes el campo vacio");
+		}
+		}while(!correcto);
+		correcto=false;
+		do {
+		System.out.println("anota la fecha en formato dd/mm/yy:");
+		String fecha2S=sc.nextLine();
+		fecha2=LocalDate.parse(fecha2S, patron);
+		try {
+			fecha2=LocalDate.parse(fecha2S, patron);
+			correcto=true;
+			}catch (DateTimeParseException e) {
+				System.out.println("fecha incorrcta");
+			}
+		}while(!correcto);
+		if(fecha1.isBefore(fecha2))
+			System.out.println(patron.format(fecha1)+ "   " +patron.format(fecha2));
+		else
+			if (fecha2.isBefore(fecha1))
+				System.out.println(patron.format(fecha2)+ "   " +patron.format(fecha1));
+			else
+				System.out.println("son iguales");
+		
+		
+		
+	}
+
+}

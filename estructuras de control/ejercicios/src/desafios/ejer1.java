@@ -1,0 +1,109 @@
+package desafios;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class ejer1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+/* hacer el juego de piedra, papel, tijera. el jugador juega con la maquina*/
+		Scanner sc=new Scanner (System.in);
+		Random r=new Random();
+		String Maquina = null;
+		int maquina=r.nextInt(5)+1;
+		final int piedra=1, tijera=2, papel=3, spock=4, lagarto=5;
+		String  jugador="";
+		boolean correcto=false;
+		
+		do {
+			do {
+			System.out.println("introduce tu eleccion");
+			System.out.println("piedra, tijera, papel, spock, lagarto");
+			jugador=sc.nextLine();
+			switch(maquina) {
+			case 1:
+				Maquina="piedra";
+				
+				break;
+			case 2:
+				Maquina="tijera";
+				break;
+			case 3:
+				Maquina="papel";
+				break;
+			case 4:
+				Maquina="spock";
+				break;
+			case 5:
+				Maquina="lagarto";
+				break;
+				
+			}
+			System.out.println("la maquiena ha sacado" +Maquina);
+			if(jugador.isEmpty())
+				System.out.println("elige una opcion");
+			}while(jugador.isEmpty());
+			jugador=jugador.toLowerCase();
+		switch(jugador) {
+		case "piedra":
+			if(maquina==2 || maquina==5) {
+				System.out.println("has ganado");
+				correcto=true;}
+			else 
+				if(maquina==1)
+					System.out.println("es un empate");
+				else
+					System.out.println("has perdido");
+			break;
+		case "tijera":
+			if(maquina==3 || maquina==5) {
+				System.out.println("has ganado");
+				correcto=true;}
+			else 
+				if(maquina==2)
+					System.out.println("es un empate");
+				else
+					System.out.println("has perdido");
+			break;
+			
+		case "papel":
+			if(maquina==1 || maquina==4) {
+				System.out.println("has ganado");
+				correcto=true;}
+			else 
+				if(maquina==3)
+					System.out.println("es un empate");
+				else
+					System.out.println("has perdido");	
+			break;
+		case "spock":
+			if(maquina==2 || maquina==1) {
+				System.out.println("has ganado");
+				correcto=true;}
+			else 
+				if(maquina==4)
+					System.out.println("es un empate");
+				else
+					System.out.println("has perdido");	
+			break;
+		case "lagarto":
+			if(maquina==4 || maquina==3) {
+				System.out.println("has ganado");
+				correcto=true;}
+			else 
+				if(maquina==5)
+					System.out.println("es un empate");
+				else
+					System.out.println("has perdido");	
+			break;
+		default: 
+			System.out.println("introduce una opcion valida");
+			}
+			 
+		}while(!correcto);
+		
+		System.out.println("gracias por jugar");
+	}
+
+}

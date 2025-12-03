@@ -1,0 +1,23 @@
+package EjerString;
+
+import java.util.Scanner;
+
+public class ejer1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//Programa que lee cadenas hasta anotar “fin” y las muestra en mayúsculas
+String cadena="";
+Scanner sc=new Scanner (System.in);
+do {
+	System.out.println("introduce una cadena");
+	cadena=sc.nextLine();
+	cadena=cadena.toUpperCase();
+	System.out.println("mayuscula"+cadena);
+}while(!cadena.equalsIgnoreCase("fin"));
+System.out.println("cadenas"+cadena);
+}
+		
+	
+
+}
