@@ -46,7 +46,11 @@ public class ejer1b {
 				try {
 					fecha2S = sc.nextLine();
 					fecha2 = LocalDate.parse(fecha2S, patron);
-					correcto = true;
+					if (fecha1.isBefore(fecha2)) {
+	                    correcto = true; 
+					} else {
+						System.out.println("Error: La primera fecha debe ser anterior a la segunda.");}
+          
 				} catch (DateTimeParseException e) {
 					// TODO Auto-generated catch block
 					System.out.println("introduce una fecha valida");
@@ -56,9 +60,7 @@ public class ejer1b {
 				}
 				if (fecha1.isBefore(fecha2)) {
                     correcto = true; 
-                } else {
-                    System.out.println("Error: La primera fecha debe ser anterior a la segunda.");}
-          
+                
 		} while (!correcto);
 
 		diff = CalcularTiempo(fecha1, fecha2);
