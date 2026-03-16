@@ -102,7 +102,7 @@ public class control1 {
 							fecha=LocalDate.parse(resultado[1], d);
 							Auto auto=new Auto(resultado[0],resultado[3],fecha,precio);
 						int pos=buscar(autos,auto);
-						autos.add(pos,auto);
+						autos.add(pos,auto);	
 						}catch(DateTimeParseException e) {
 							System.out.println("Fecha incorrecta");
 							writer.write("Fichero autos:Fecha incorrecta");
