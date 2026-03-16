@@ -1,0 +1,72 @@
+package practica;
+
+import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.WRITE;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.charset.Charset;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+import java.nio.file.OpenOption;
+
+public class ejercicio12 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		 * Codificar un programa que lee un fichero de texto y escribe en otro sólo las
+		 * líneas que contiene una palabra introducida por teclado.
+		 */
+		Scanner sc = new Scanner(System.in);
+		String palabra;
+		boolean encontrado = false;
+		Path file = Paths.get("entrada.txt");
+		Path fileOut = Paths.get("copiado.txt");
+		Charset charset = Charset.forName("UTF-8");
+		BufferedReader reader = null;
+		BufferedWriter writer = null;
+
+		System.out.println("introduce la palabra que quieres buscar");
+		palabra = sc.nextLine();
+		try {
+			// Creamos un BuffereReader de java.io
+			reader = Files.newBufferedReader(file, charset);
+			writer = Files.newBufferedWriter(fileOut, charset, CREATE, WRITE);
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				//cuando indexOf (es un buscador que nos devulve la posicion de donde encontro algo
+				//si nos da algo doferente de -1 es que encontro la palabra
+				if (line.indexOf(palabra) != -1) {
+					System.out.println("palabra encontrada");
+					encontrado = true;
+					writer.write(line);
+					writer.newLine();	//escribimos un salto de liena para no mezclar las lineas
+				}
+			}
+
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		} finally {
+
+			if (reader != null) {
+				try {
+					reader.close();
+					writer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+			if (!encontrado) {
+				System.out.println("no se ha encontrado la palabra");
+			}
+		}
+	}
+
+}
