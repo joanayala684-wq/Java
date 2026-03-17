@@ -1,55 +1,51 @@
 package Sintaxis;
 
-import java.util.LinkedList;
-import java.util.ListIterator;
-import Almacen.ArrayList.Almacen;
 
-public class Linkedlist {
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+
+public class Arraylist {
 
     public static void main(String[] args) {
 
-        /***********************************LinkedList*****************************************/
+        /***********************************ArrayList*****************************************/
 
         /*
-         * LinkedList<E>:
-         * Ventaja: agregar o eliminar elementos en cualquier posición es rápido.
-         * Desventaja: acceder a un elemento por índice es más lento que en ArrayList.
+         * ArrayList<E>:
+         * Ventaja: acceso rápido a un elemento en particular.
+         * Desventaja: eliminar un elemento implica mover todos los demás para cerrar el "hueco".
          *
          * Concepto:
          * - Lista dinámica que crece o se achica sola según lo que metas o saques.
-         * - Internamente usa nodos enlazados (cada elemento apunta al siguiente y al anterior).
-         * - Solo guarda objetos.
-         * - Clase de java.util.
+         * - No necesitas indicar el tamaño inicial.
+         * - Internamente usa un array; si se llena, crea uno más grande y copia los elementos (transparente para el usuario, pero puede ser costoso si ocurre mucho).
+         * - Array = viene con Java y puede contener tipos básicos u objetos.
+         * - ArrayList = clase de java.util y solo contiene objetos.
          */
 
-        /* Declarar un LinkedList */
-        LinkedList<Alumno> listaAlumnos = new LinkedList<>();
-        // LinkedList<Alumno> → tipo de objeto que guarda
+        /* Declarar un ArrayList */
+        ArrayList<Alumno> listaAlumnos = new ArrayList<>();
+        // ArrayList<Alumno> → tipo de objeto que guarda
         // listaAlumnos → nombre de la lista
 
         /* Tamaño */
         System.out.println(listaAlumnos.size()); // Inicialmente 0
 
         /* Agregar elementos */
-        listaAlumnos.add(new Alumno("Ana", 20)); // al final
-        listaAlumnos.addLast(new Alumno("Marta", 21)); // al final
-        listaAlumnos.addFirst(new Alumno("Luis", 22)); // al inicio
+        listaAlumnos.add(new Alumno("Ana", 20));
+        listaAlumnos.add(new Alumno("Luis", 22));
 
         /* Obtener elemento */
         listaAlumnos.get(0); // obtiene el primer elemento
-        // ➤ Obtener primero o último
-        System.out.println(listaAlumnos.getFirst()); // primer elemento
-        System.out.println(listaAlumnos.getLast());  // último elemento
 
         /* Modificar elemento */
-        listaAlumnos.set(0, new Alumno("Carlos", 23)); // reemplaza el elemento en la posición 0
+        listaAlumnos.set(0, new Alumno("Marta", 21)); // reemplaza el elemento en la posición 0
 
         /* Borrar elemento */
         listaAlumnos.remove(0); // elimina el elemento en la posición 0
-        listaAlumnos.remove(new Alumno("Marta", 21)); // elimina por objeto usando equals
-        // ➤ Eliminar primero o último
-        listaAlumnos.removeFirst();
-        listaAlumnos.removeLast();
+        listaAlumnos.remove(new Alumno("Luis", 22)); // elimina el primer elemento que sea igual usando equals
+        listaAlumnos.clear(); // deja la lista vacía
 
         /* Recorrer lista */
         for (int i = 0; i < listaAlumnos.size(); i++) {
@@ -67,7 +63,7 @@ public class Linkedlist {
         }
 
         // ➤ CLONAR la lista
-        LinkedList<Alumno> copiaLista = new LinkedList<>(listaAlumnos);
+        ArrayList<Alumno> copiaLista = new ArrayList<>(listaAlumnos);
 
         // ➤ VERIFICAR si está vacía
         if (listaAlumnos.isEmpty()) {
@@ -77,8 +73,8 @@ public class Linkedlist {
         // ➤ OBTENER POSICIÓN de un elemento
         int pos = listaAlumnos.indexOf(new Alumno("Ana", 20));
         System.out.println(pos); // muestra la posición o -1 si no está
-
-        // ➤ ITERATOR (recorrer con ListIterator)
+        
+     // ➤ ITERATOR (recorrer con ListIterator)
         ListIterator<Alumno> it = listaAlumnos.listIterator();
         System.out.println("Recorrido hacia adelante:");
         while(it.hasNext()) {
@@ -88,5 +84,6 @@ public class Linkedlist {
         while(it.hasPrevious()) {
             System.out.println(it.previous());
         }
+        
     }
 }

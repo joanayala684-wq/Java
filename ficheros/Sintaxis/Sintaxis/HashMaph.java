@@ -2,7 +2,7 @@ package Sintaxis;
 
 import java.util.HashMap;
 
-public class Hashmap {
+public class HashMaph {
 
     public static void main(String[] args) {
 
@@ -21,8 +21,7 @@ public class Hashmap {
          */
 
         /* Declarar un HashMap */
-        HashMap<Integer, Alumno> mapaAlumnos = new HashMap<>();
-        // Integer → clave (key)
+    	HashMap< String, Integer> mapaAlumnos = new HashMap<>();        // Integer → clave (key)
         // Alumno → valor (value)
         // mapaAlumnos → nombre de la variable
 
