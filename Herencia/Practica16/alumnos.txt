@@ -1,0 +1,5 @@
+Normal;Juan;Perez;Primero;1000;N/A
+Extranjero;Hans;Muller;Segundo;1000;Alemania
+Puente;Elena;Garcia;Tercero;1200;Ingenieria Tecnica
+Extranjero;Sasha;Ivanov;Primero;1500;Rusia
+Normal;Ana;Lopez;Cuarto;1000;N/A

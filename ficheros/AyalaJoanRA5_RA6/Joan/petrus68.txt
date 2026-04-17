@@ -1,0 +1,2 @@
+Pedido: 6Precio: 70.0
+Pedido: 34Precio: 28.5
