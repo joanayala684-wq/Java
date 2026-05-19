@@ -40,7 +40,7 @@ public class BD_Taller extends BD_Conector {
 	}
 
 	public Cliente buscarCliente(String mat) throws ErrorBaseDatos {
-		String cadenaSQL = "SELECT * FROM clientes WHERE matricula= '" + mat + "'";
+		String cadenaSQL = "SELECT cl.* FROM clientes cl JOIN vehiculos ve ON idCliente=dni WHERE matricula= '" + mat + "'";
 		Cliente cl = null;
 		try {
 			this.abrir();
@@ -51,12 +51,12 @@ public class BD_Taller extends BD_Conector {
 				if (reg.getInt(5) > 0) {
 					cl = new ClienteCarnet(reg.getString(1), reg.getString(2), reg.getString(3), reg.getString(4),
 							reg.getInt(5), reg.getInt(6));
-				} else {
+				} if(reg.getInt(5)==0) {
 					cl = new ClienteNoCarnet(reg.getString(1), reg.getString(2), reg.getString(3), reg.getString(4),
 							reg.getInt(5), reg.getInt(6));
 
 				}
-			}
+			 }
 
 			s.close();
 			this.cerrar();
@@ -108,6 +108,74 @@ public class BD_Taller extends BD_Conector {
 			throw new ErrorBaseDatos("Error al modificar los datos del arreglo.");
 		}
 	}
+	public Mecanico contarArreglos () throws ErrorBaseDatos {
+		String cadenaSQL = "SELECT idMecanico,  COUNT(*)  FROM arreglos GROUP BY idMecanico ORDER BY COUNT(*) DESC";
+		Mecanico m = null;
+		int cont=0;
+		try {
+			this.abrir();
+			s = c.createStatement();
+			reg = s.executeQuery(cadenaSQL);
+			while (reg.next()) {
+				if(cont==0) {
+					m= new Mecanico(reg.getInt(1));
+					cont++;}
+				else {
+					break;
+				}
+			}
+			s.close();
+			this.cerrar();
+			return m;
+		} catch (SQLException e) {
+			this.cerrar();
+			throw new ErrorBaseDatos("Error al buscar el cliente");
+		}
+	}
+	public Mecanico contarArreglos2 () throws ErrorBaseDatos {
+		String cadenaSQL = "SELECT arr.idMecanico,  COUNT(idFactura), nombre, telefono FROM arreglos arr JOIN mecanicos me ON arr.idMecanico=me.idMecanico  GROUP BY arr.idMecanico ORDER BY COUNT(idFactura) DESC";
+		Mecanico m = null;
+		int cont=0;
+		try {
+			this.abrir();
+			s = c.createStatement();
+			reg = s.executeQuery(cadenaSQL);
+			while (reg.next()) {
+				if(cont==0) {
+					m= new Mecanico(reg.getInt(1), reg.getString(3), reg.getString(4));
+					cont++;}
+				else {
+					break;
+				}
+			}
+			s.close();
+			this.cerrar();
+			return m;
+		} catch (SQLException e) {
+			this.cerrar();
+			throw new ErrorBaseDatos("Error al buscar el cliente");
+		}
+	}
+	public Arreglo arregloExpensive () throws ErrorBaseDatos {
+		String cadenaSQL = "SELECT * FROM arreglos WHERE importe in (SELECT MAX(importe) FROM arreglos )";
+		Arreglo arr = null;
+		int cont=0;
+		try {
+			this.abrir();
+			s = c.createStatement();
+			reg = s.executeQuery(cadenaSQL);
+			if (reg.next()) {
+				arr= new Arreglo(reg.getInt(1), reg.getInt(2), reg.getString(3), reg.getObject(4, java.time.LocalDate.class),  reg.getObject(5, java.time.LocalDate.class), reg.getDouble(6));
+			}
+			s.close();
+			this.cerrar();
+			return arr;
+		} catch (SQLException e) {
+			this.cerrar();
+			throw new ErrorBaseDatos("Error al buscar el cliente");
+		}
+	}
+
 	/*
 	 * SELECT idMecanico, COUNT(*) AS total_arreglos FROM arreglos GROUP BY
 	 * idMecanico ORDER BY total_arreglos DESC LIMIT 1;

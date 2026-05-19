@@ -12,11 +12,19 @@ public class Mecanico {
 	 public int getIdMecanico() {
 		 return idMecanico;
 	 }
+	 public Mecanico(int idMecanico) {
+		super();
+		this.idMecanico = idMecanico;
+	}
 	 public String getNombre() {
 		 return nombre;
 	 }
 	 public String getTelefono() {
 		 return telefono;
+	 }
+	 @Override
+	 public String toString() {
+		return "Mecanico [idMecanico=" + idMecanico + ", nombre=" + nombre + ", telefono=" + telefono + "]";
 	 }
 	 
 }

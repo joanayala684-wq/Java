@@ -17,6 +17,7 @@ public class ClienteCarnet extends Cliente{
 		if(visitas>=4) {
 			importe=importe-(num*50);
 		}
+		importe=a.getImporte();
 		visitas++;
 		return importe;
 	}

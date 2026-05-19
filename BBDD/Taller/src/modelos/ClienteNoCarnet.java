@@ -18,7 +18,7 @@ public class ClienteNoCarnet extends Cliente {
 			importe=importe*1.20;
 		}
 		visitas++;
-
+		importe=a.getImporte();
 		return importe;
 	}
 
