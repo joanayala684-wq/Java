@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<curso_daw1>
+    <nombreCurso>1º Desarrollo de Aplicaciones Web</nombreCurso>
+    <alumnos>
+        <persona>
+            <nombre>Juan</nombre>
+            <edad>20</edad>
+        </persona>
+    </alumnos>
+</curso_daw1>

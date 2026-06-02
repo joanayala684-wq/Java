@@ -28,6 +28,9 @@ public class Linkedlist {
         // LinkedList<Alumno> → tipo de objeto que guarda
         // listaAlumnos → nombre de la lista
 
+
+    /*
+colaITV.add(posicionSiguienteCita, v);**/ */
         /* Tamaño */
         System.out.println(listaAlumnos.size()); // Inicialmente 0
 

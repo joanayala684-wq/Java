@@ -72,6 +72,7 @@ public class main {
 			case 2:
 				miCola.ordenarCola();
 			    System.out.println("Cola ordenada por edad y altura.");
+			   
 				break;
 			case 3:
 				if (Cola.getContPersonas() >= 4) {

@@ -1,9 +1,11 @@
 package ejemploInterface3;
 
+import java.util.Comparator;
+
 public class hg {
-	@Override
-    public int compare(Student s1, Student s2) {
-        if (ascendente) {
+	public int compare(Student s1, Student s2) {
+        boolean ascendente;
+		if (ascendente) {
             return Integer.compare(s1.getAge(), s2.getAge());
         } else {
             return Integer.compare(s2.getAge(), s1.getAge()); // Al revés

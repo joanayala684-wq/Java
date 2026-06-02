@@ -20,7 +20,7 @@ private String name;
 private int age;  
 private LocalDate fIncorporacion;
 
-Student(int nu,String name,int age, LocalDate fIncorporacion){  
+public Student(int nu,String name,int age, LocalDate fIncorporacion){  
 this.number=nu;  
 this.name=name;  
 this.age=age; 

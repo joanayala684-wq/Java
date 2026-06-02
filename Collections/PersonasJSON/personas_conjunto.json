@@ -1,0 +1,21 @@
+[ {
+  "nombre" : "Karoll",
+  "edad" : 30,
+  "aficiones" : [ {
+    "nombre" : "Leer",
+    "descripcion" : "Lectura de novelas históricas"
+  }, {
+    "nombre" : "Senderismo",
+    "descripcion" : "Excursiones por la montaña"
+  } ]
+}, {
+  "nombre" : "Vicky",
+  "edad" : 28,
+  "aficiones" : [ {
+    "nombre" : "Leer",
+    "descripcion" : "Lectura de novelas históricas"
+  }, {
+    "nombre" : "Fotografia",
+    "descripcion" : "Fotografiar paisajes"
+  } ]
+} ]

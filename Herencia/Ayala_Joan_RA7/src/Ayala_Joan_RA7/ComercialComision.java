@@ -1,14 +1,16 @@
 package Ayala_Joan_RA7;
-
+                                           
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class ComercialComision extends Comercial {
+	private static final double comision=10;
+	private String marca;
 
-	public ComercialComision(String nombre, HashMap<String, Integer> marcas) {
-		super(nombre, marcas);
-		// TODO Auto-generated constructor stub
+	public ComercialComision(String nombre, String marca) {
+		super(nombre);
+		this.marca=marca;
 	}
 
 	
@@ -18,6 +20,9 @@ public class ComercialComision extends Comercial {
 		salario=sueldo;
 		return sueldo;
 	}
-	
+	@Override
+	public String toString() {
+		return "ComercialComision[ "+marca+super.toString()+"]";
+	}
 
 }

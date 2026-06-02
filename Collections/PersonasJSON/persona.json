@@ -1,0 +1,11 @@
+{
+  "nombre" : "Joan",
+  "edad" : 20,
+  "aficiones" : [ {
+    "nombre" : "Leer",
+    "descripcion" : "Lectura de novelas históricas"
+  }, {
+    "nombre" : "Senderismo",
+    "descripcion" : "Excursiones por la montaña"
+  } ]
+}

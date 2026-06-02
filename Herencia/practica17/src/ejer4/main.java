@@ -22,10 +22,10 @@ public class main {
         		break;
         	}
         	
-        	/*if (p instanceof Serie) {
-    			Serie s = (Serie) p; // Convertimos p a Serie para leer sus datos
-    				if (s.getTitulo().equals(busqueda)) { ... }
-}**/
+		 /*if (p instanceof Serie) {
+		    			Serie s = (Serie) p; // Convertimos p a Serie para leer sus datos
+		    				if (s.getTitulo().equals(busqueda)) { ... }
+		}**/
         	boolean encontrado=false;
         	for (Prestable p : inventario) {
         		if (p.toString().toLowerCase().contains(titulo.toLowerCase())) {

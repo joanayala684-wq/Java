@@ -1,19 +1,13 @@
 package Ayala_Joan_RA7;
 
-
 import java.util.HashMap;
 import java.util.HashSet;
 
-
 public abstract class Comercial {
-	
-	
 
 	public HashMap<String, Integer> getMarcas() {
-		return marcas;
+		return registroComercial;
 	}
-
-
 
 	private String nombre;
 	private static int numEmple;
@@ -21,42 +15,42 @@ public abstract class Comercial {
 	protected int contExtra;
 	protected static double salario;
 
-	
-	private HashMap<String, Integer>  marcas = new HashMap<>();
-	
-	public Comercial(String nombre, HashMap<String, Integer> marcas) {
+	private HashMap<String, Integer> registroComercial = new HashMap<>();
+
+	public Comercial(String nombre) {
 		super();
-		numEmple=numEmple++;
+		numEmple = numEmple++;
 		this.nombre = nombre;
-		this.marcas = marcas;
 	}
+
+	public abstract double pagar();
+
 	
-	public abstract double pagar () ;
-	
-	public int compareTo(Comercial co) {
-	    if (salario == co.salario)
-	        return 0;
-	    else if (salario > co.salario)
-	        return 1;
-	    else
-	        return 1;
+
+	public void venta(String marca, int unidadesVendidas) {
+		if (marca.equalsIgnoreCase("A")) {
+			registroComercial.put(marca, registroComercial.get(marca+unidadesVendidas));}
+
+		
+		if (marca.equalsIgnoreCase("B")) {
+			registroComercial.put(marca, registroComercial.get(marca+unidadesVendidas));}
+
+		
+		if (marca.equalsIgnoreCase("C")) {
+			registroComercial.put(marca, registroComercial.get(marca+unidadesVendidas));}
+
+		
 	}
-	public void venta (String marca, int numUnidades) {
-		contVentas+=numUnidades;
-		marcas.put(marca, numUnidades);
-		if (numUnidades>= 5) {
-			contExtra++;
-		}
-	}
+
 	public static void setSalario(double salario) {
 		Comercial.salario = salario;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Comercial [nombre=" + nombre + ", marcas=" + marcas + "]";
+		return "Comercial [nombre=" + nombre + ", marcas=" + registroComercial + "]";
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -65,19 +59,12 @@ public abstract class Comercial {
 		return numEmple;
 	}
 
-
 	public int getContVentas() {
 		return contVentas;
 	}
 
-
-	
 	public static double getSalario() {
 		return salario;
 	}
-
-	
-
-	
 
 }

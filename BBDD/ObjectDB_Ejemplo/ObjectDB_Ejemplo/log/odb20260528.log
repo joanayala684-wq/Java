@@ -1,0 +1,72 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-28 01:03:47 #1 store] 
+Database 'C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\java\BBDD\ObjectDB_Ejemplo\ObjectDB_Ejemplo\db\libros.odb' is opened by 24712@joan
+
+[2026-05-28 01:03:47 #2 store] 
+Configuration path: ?
+
+[2026-05-28 01:03:47 #3 type] 
+Type objetodb.Libro is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-28 01:13:11 #1 store] 
+Database 'C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\java\BBDD\ObjectDB_Ejemplo\ObjectDB_Ejemplo\db\libros.odb' is opened by 6256@joan
+
+[2026-05-28 01:13:11 #2 store] 
+Configuration path: ?
+
+[2026-05-28 01:13:11 #3 type] 
+Type objetodb.Libro is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-28 01:18:01 #1 store] 
+Database 'C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\java\BBDD\ObjectDB_Ejemplo\ObjectDB_Ejemplo\db\libros.odb' is opened by 4656@joan
+
+[2026-05-28 01:18:01 #2 store] 
+Configuration path: ?
+
+[2026-05-28 01:18:01 #3 type] 
+Type objetodb.Libro is not enhanced.
+
+[2026-05-28 01:19:22 #4 store] 
+Database 'C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\java\BBDD\ObjectDB_Ejemplo\ObjectDB_Ejemplo\db\libros.odb' is closed by 4656@joan
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-28 01:24:49 #1 store] 
+Database 'C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\java\BBDD\ObjectDB_Ejemplo\ObjectDB_Ejemplo\db\libros.odb' is opened by 21176@joan
+
+[2026-05-28 01:24:49 #2 store] 
+Configuration path: ?
+
+[2026-05-28 01:24:49 #3 type] 
+Type objetodb.Libro is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-28 09:01:10 #1 store] 
+Database 'C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\java\BBDD\ObjectDB_Ejemplo\ObjectDB_Ejemplo\db\libros.odb' has been recovered (tr. 6-7)
+
+[2026-05-28 09:01:10 #2 store] 
+Database 'C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\java\BBDD\ObjectDB_Ejemplo\ObjectDB_Ejemplo\db\libros.odb' is opened by 18376@joan
+
+[2026-05-28 09:01:10 #3 store] 
+Configuration path: ?
+
+[2026-05-28 09:01:10 #4 type] 
+Type objetodb.Libro is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2026-05-28 09:09:02 #1 store] 
+Database 'C:\Users\joana\OneDrive\Imágenes\Escritorio\FP DAW\java\BBDD\ObjectDB_Ejemplo\ObjectDB_Ejemplo\db\libros.odb' is opened by 20188@joan
+
+[2026-05-28 09:09:02 #2 store] 
+Configuration path: ?
+
+[2026-05-28 09:09:02 #3 type] 
+Type objetodb.Libro is not enhanced.
+

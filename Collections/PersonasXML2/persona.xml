@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persona>
+    <nombre>Joan</nombre>
+    <edad>21</edad>
+    <aficiones>
+              <aficion>
+            <nombre>Leer</nombre>
+            <descripcion>Libros</descripcion>
+        </aficion>
+        <aficion>
+            <nombre>Dibujar</nombre>
+            <descripcion>Pintar con acuarelas</descripcion>
+        </aficion>
+    </aficiones>
+</persona>
